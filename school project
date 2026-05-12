@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siddarth International School</title>
+    
+    <!-- ========================
+         INTERNAL CSS STYLING
+         ======================== -->
+    <style>
+        /* ===== GOOGLE FONTS IMPORT ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
+
+        /* ===== GLOBAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .school-name {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .school-name span {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ===== NAVIGATION MENU ===== */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            position: relative;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffeb3b;
+        }
+
+        /* ===== MOBILE MENU TOGGLE ===== */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* ===== MAIN CONTENT SECTIONS ===== */
+        section {
+            display: none;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+        }
+
+        section.active {
+            display: block;
+            animation: slideInUp 0.6s ease;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatUp {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* ===== HOME SECTION ===== */
+        .home {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .banner {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-bottom: 3rem;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.1)"></path></svg>');
+            background-repeat: no-repeat;
+            background-size: cover;
+            animation: floatUp 6s ease-in-out infinite;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .welcome-message {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .welcome-text {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .welcome-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .welcome-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        .welcome-btn:active {
+            transform: translateY(0);
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            background: white;
+            border-radius: 20px;
+            padding: 4rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .about h2 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .about h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .about-subtitle {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .about-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .about-card h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .about-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* ===== COURSES SECTION ===== */
+        .courses {
+            background: white;
+            border-radius: 20px;
+            padding: 4rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .courses h2 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .courses-subtitle {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .course-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.5);
+        }
+
+        .course-card:hover::before {
+            top: -25%;
+            right: -25%;
+        }
+
+        .course-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .course-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .course-card p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            background: white;
+            border-radius: 20px;
+            padding: 4rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .contact h2 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .contact-subtitle {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: #1e3c72;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+            background: white;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+            font-weight: 500;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            font-weight: 300;
+        }
+
+        footer p:first-child {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding: 0 1rem;
+            }
+
+            .school-name {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                order: 3;
+                margin-top: 1rem;
+            }
+
+            nav.show {
+                display: flex;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            nav a {
+                display: block;
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255,255,255,0.2);
+            }
+
+            .banner {
+                height: 250px;
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .welcome-message {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .about h2,
+            .courses h2,
+            .contact h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            .about,
+            .courses,
+            .contact {
+                padding: 2rem;
+            }
+
+            .form-container {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .school-name {
+                font-size: 1.3rem;
+            }
+
+            .banner {
+                height: 200px;
+                font-size: 1.4rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .welcome-message {
+                font-size: 1.4rem;
+            }
+
+            .about h2,
+            .courses h2,
+            .contact h2 {
+                font-size: 1.6rem;
+            }
+
+            .about h2::after,
+            .courses h2::after,
+            .contact h2::after {
+                width: 60px;
+            }
+
+            .about-content,
+            .courses-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            nav ul {
+                gap: 0;
+            }
+
+            .about,
+            .courses,
+            .contact {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========================
+         HEADER & NAVIGATION
+         ======================== -->
+    <header>
+        <div class="header-container">
+            <div class="school-name">🎓 Siddarth <span>International</span></div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <nav id="navMenu">
+                <ul>
+                    <li><a href="#" onclick="showSection('home')">Home</a></li>
+                    <li><a href="#" onclick="showSection('about')">About</a></li>
+                    <li><a href="#" onclick="showSection('courses')">Courses</a></li>
+                    <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========================
+         HOME SECTION
+         ======================== -->
+    <section id="home" class="home active">
+        <div class="banner">
+            <div class="banner-content">
+                <div>🏫 Welcome to Siddarth International</div>
+            </div>
+        </div>
+        <h2 class="welcome-message">Welcome to Our School!</h2>
+        <p class="welcome-text">
+            Siddarth International is dedicated to providing quality education and fostering a love of learning 
+            in a supportive and inclusive environment. We believe in nurturing young minds and preparing 
+            students for a successful future. Our commitment to excellence ensures every student thrives academically 
+            and personally.
+        </p>
+        <div style="text-align: center;">
+            <button class="welcome-btn" onclick="showWelcomeMessage()">
+                ✨ Click to See Our Message
+            </button>
+        </div>
+    </section>
+
+    <!-- ========================
+         ABOUT SECTION
+         ======================== -->
+    <section id="about" class="about">
+        <h2>About Our School</h2>
+        <p class="about-subtitle">
+            Discover what makes Siddarth International a beacon of educational excellence
+        </p>
+        
+        <div class="about-content">
+            <div class="about-card">
+                <h3>📚 Our Mission</h3>
+                <p>
+                    We are committed to providing excellent education that develops critical thinking, 
+                    creativity, and character. Our goal is to empower students with the knowledge and 
+                    skills needed to thrive in a rapidly changing world and become global citizens.
+                </p>
+            </div>
+
+            <div class="about-card">
+                <h3>👨‍🏫 Expert Faculty</h3>
+                <p>
+                    Our experienced and dedicated teachers are passionate about education. They use 
+                    innovative teaching methods and provide personalized attention to each student, ensuring 
+                    their academic and personal growth in a nurturing environment.
+                </p>
+            </div>
+
+            <div class="about-card">
+                <h3>🎯 Our Vision</h3>
+                <p>
+                    We envision a community of learners who are innovative, compassionate, and socially 
+                    responsible. We strive to create an inclusive environment where every student can 
+                    achieve their full potential and contribute to society.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================
+         COURSES SECTION
+         ======================== -->
+    <section id="courses" class="courses">
+        <h2>Our Courses</h2>
+        <p class="courses-subtitle">
+            Explore a variety of engaging courses designed to meet diverse learning needs and interests
+        </p>
+
+        <div class="courses-container">
+            <!-- Course 1 -->
+            <div class="course-card">
+                <div class="course-icon">📖</div>
+                <h3>English & Literature</h3>
+                <p>
+                    Develop strong communication and writing skills. Explore classic and contemporary 
+                    literature while enhancing your ability to express ideas clearly and persuasively.
+                </p>
+            </div>
+
+            <!-- Course 2 -->
+            <div class="course-card">
+                <div class="course-icon">🔬</div>
+                <h3>Science & Technology</h3>
+                <p>
+                    Discover the wonders of biology, chemistry, and physics. Engage in hands-on 
+                    experiments and learn practical applications of scientific concepts.
+                </p>
+            </div>
+
+            <!-- Course 3 -->
+            <div class="course-card">
+                <div class="course-icon">🧮</div>
+                <h3>Mathematics</h3>
+                <p>
+                    Master mathematical concepts from basic arithmetic to advanced problem-solving. 
+                    Build strong logical reasoning and analytical skills essential for many careers.
+                </p>
+            </div>
+
+            <!-- Course 4 -->
+            <div class="course-card">
+                <div class="course-icon">🌍</div>
+                <h3>Social Studies</h3>
+                <p>
+                    Explore history, geography, and cultural studies. Understand diverse perspectives 
+                    and develop global awareness to become informed citizens of the world.
+                </p>
+            </div>
+
+            <!-- Course 5 -->
+            <div class="course-card">
+                <div class="course-icon">🎨</div>
+                <h3>Arts & Creativity</h3>
+                <p>
+                    Express yourself through visual arts, music, and creative writing. Develop 
+                    artistic skills and foster creative thinking across multiple mediums.
+                </p>
+            </div>
+
+            <!-- Course 6 -->
+            <div class="course-card">
+                <div class="course-icon">⚽</div>
+                <h3>Physical Education</h3>
+                <p>
+                    Build healthy habits and teamwork skills through sports and fitness activities. 
+                    Develop physical strength and mental resilience in a supportive environment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================
+         CONTACT SECTION
+         ======================== -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p class="contact-subtitle">
+            Have questions? We'd love to hear from you! Get in touch with our team today.
+        </p>
+
+        <div class="form-container">
+            <form id="contactForm">
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="name">📝 Full Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name">
+                    <div class="error-message" id="nameError"></div>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email">✉️ Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address">
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <!-- Message Field -->
+                <div class="form-group">
+                    <label for="message">💬 Message *</label>
+                    <textarea id="message" name="message" placeholder="Enter your message or question here..."></textarea>
+                    <div class="error-message" id="messageError"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ========================
+         FOOTER
+         ======================== -->
+    <footer>
+        <p>&copy; 2026 Siddarth International School. All rights reserved.</p>
+        <p>✨ Fostering Excellence in Education ✨</p>
+    </footer>
+
+    <!-- ========================
+         INTERNAL JAVASCRIPT
+         ======================== -->
+    <script>
+        // ===== NAVIGATION & SECTION MANAGEMENT =====
+
+        /**
+         * Show the selected section and hide others
+         * @param {string} sectionId - The ID of the section to display
+         */
+        function showSection(sectionId) {
+            // Get all sections
+            const sections = document.querySelectorAll('section');
+            
+            // Hide all sections
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+            }
+            
+            // Close mobile menu if open
+            closeMenu();
+            
+            // Scroll to top with smooth animation
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        /**
+         * Toggle mobile menu visibility
+         */
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('show');
+        }
+
+        /**
+         * Close the mobile menu
+         */
+        function closeMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.remove('show');
+        }
+
+        // Menu toggle button event listener
+        document.getElementById('menuToggle').addEventListener('click', toggleMenu);
+
+        // ===== WELCOME MESSAGE FEATURE =====
+
+        /**
+         * Display a welcome message alert
+         */
+        function showWelcomeMessage() {
+            alert('🎓 Welcome to Siddarth International!\n\n✨ We are committed to providing quality education and fostering a love of learning.\n\n🚀 Join us on this exciting educational journey and unlock your potential!\n\n📚 Excellence through Education');
+        }
+
+        // ===== CONTACT FORM VALIDATION =====
+
+        /**
+         * Validate email format using regex
+         * @param {string} email - Email address to validate
+         * @returns {boolean} - True if valid, false otherwise
+         */
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        /**
+         * Clear all error messages
+         */
+        function clearErrorMessages() {
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(error => {
+                error.classList.remove('show');
+                error.textContent = '';
+            });
+        }
+
+        /**
+         * Show an error message for a specific field
+         * @param {string} fieldId - The ID of the field
+         * @param {string} message - The error message to display
+         */
+        function showErrorMessage(fieldId, message) {
+            const errorElement = document.getElementById(fieldId + 'Error');
+            if (errorElement) {
+                errorElement.textContent = '❌ ' + message;
+                errorElement.classList.add('show');
+            }
+        }
+
+        /**
+         * Validate the contact form
+         * @returns {boolean} - True if form is valid, false otherwise
+         */
+        function validateForm() {
+            // Clear previous error messages
+            clearErrorMessages();
+
+            // Get form field values
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            let isValid = true;
+
+            // Validate name
+            if (name === '') {
+                showErrorMessage('name', 'Please enter your full name');
+                isValid = false;
+            } else if (name.length < 3) {
+                showErrorMessage('name', 'Name must be at least 3 characters long');
+                isValid = false;
+            }
+
+            // Validate email
+            if (email === '') {
+                showErrorMessage('email', 'Please enter your email address');
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                showErrorMessage('email', 'Please enter a valid email address');
+                isValid = false;
+            }
+
+            // Validate message
+            if (message === '') {
+                showErrorMessage('message', 'Please enter your message');
+                isValid = false;
+            } else if (message.length < 10) {
+                showErrorMessage('message', 'Message must be at least 10 characters long');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        /**
+         * Handle form submission
+         */
+        function handleFormSubmit(event) {
+            // Prevent default form submission
+            event.preventDefault();
+
+            // Validate form
+            if (validateForm()) {
+                // Get form values
+                const name = document.getElementById('name').value;
+                
+                // Show success message
+                alert(`✅ Thank you, ${name}!\n\n📨 Your message has been sent successfully.\n\n🙏 We will get back to you soon!\n\nThank you for contacting Siddarth International.`);
+                
+                // Reset form
+                document.getElementById('contactForm').reset();
+                
+                // Clear error messages
+                clearErrorMessages();
+            }
+        }
+
+        // Add event listener to form submission
+        document.getElementById('contactForm').addEventListener('submit', handleFormSubmit);
+
+        // ===== PAGE INITIALIZATION =====
+
+        /**
+         * Initialize the page when it loads
+         */
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show home section by default
+            showSection('home');
+            
+            // Prevent default navigation link behavior
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
